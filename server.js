@@ -96,7 +96,7 @@ bot.on("message", async (msg) => {
 
 app.use('/lavash',ProductRoute);
 app.use('/category',Category);
-
+console.log("hh");
 app.listen(port, () => {
 console.log(port);
 });
