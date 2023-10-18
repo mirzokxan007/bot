@@ -14,7 +14,7 @@ let port = process.env.PORT || 3030;
 dotenv.config()
 
 const bot = new TelegramBot(process.env.TOKEN,{polling:true})
-const webAppUrl = "https://just-orpin.vercel.app";
+const webAppUrl = "https://bright-concha-296851.netlify.app";
 
 try {
   bot.onText(/start/, async (msg) => {
