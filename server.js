@@ -202,7 +202,8 @@ bot.on('message', (msg) => {
           console.log('Message sent by an administrator. No deletion necessary.');
           return;
         }
-        bot.deleteMessage(chatId, msg.message_id)
+        try {
+          bot.deleteMessage(chatId, msg.message_id)
           .then(() => {
             bot.getChatMember(chatId, userId) // replace with your channel username
             .then((chatMember) => {
@@ -222,6 +223,9 @@ bot.on('message', (msg) => {
           .catch((error) => {
             console.error(`Error deleting message: ${error.message}`);
           });
+        } catch (error) {
+          console.log(error);
+        }
       }
     })
     .catch((error) => {
