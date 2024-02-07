@@ -201,31 +201,31 @@ bot.on('message', (msg) => {
         if (isAdmin(msg)) {
           console.log('Message sent by an administrator. No deletion necessary.');
           return;
-        }
-        try {
+      }
+      try {
           bot.deleteMessage(chatId, msg.message_id)
           .then(() => {
-            bot.getChatMember(chatId, userId) // replace with your channel username
-            .then((chatMember) => {
-              console.log('User Information:', chatMember.user);
-            })
-            .catch((error) => {
-              console.error('Error getting user information:', error.message);
-            });
-            bot.sendMessage(id, `${msg.text} ${chatMember.user.username ?  `@${chatMember.user.username}` : chatMember.user.first_name}`)
-        .then(sentMessage => {
-          console.log('Message sent successfully:', sentMessage);
-        })
-        .catch(error => {
-          console.error('Error sending message:', error);
-        });
+              bot.getChatMember(chatId, userId)
+              .then((chatMember) => {
+                  console.log('User Information:', chatMember.user);
+              })
+              .catch((error) => {
+                  console.error('Error getting user information:', error.message);
+              });
+              bot.sendMessage(id, `${msg.text} ${chatMember.user.username ?  `@${chatMember.user.username}` : chatMember.user.first_name}`)
+              .then(sentMessage => {
+                  console.log('Message sent successfully:', sentMessage);
+              })
+              .catch(error => {
+                  console.error('Error sending message:', error);
+              });
           })
           .catch((error) => {
-            console.error(`Error deleting message: ${error.message}`);
+              console.error(`Error deleting message: ${error.message}`);
           });
-        } catch (error) {
+      } catch (error) {
           console.log(error);
-        }
+      }
       }
     })
     .catch((error) => {
